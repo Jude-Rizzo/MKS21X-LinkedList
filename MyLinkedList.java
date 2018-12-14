@@ -1,11 +1,45 @@
 public class MyLinkedList{
    private int size;
    private Node start,end;
-   public int size();
-   public boolean add(int value);
-   public String toString();
 
 
+public MyLinkedList(){
+  size = 0;
+}
+
+public int size(){
+  return size;
+}
+
+public boolean add(int value){
+  if(start == null){
+    start, end = new Node(value);
+    return true;
+  }
+  x = new Node(value);
+  end.setNext(x);
+  end = x;
+
+}
+
+public String toString(){
+  ans = "["
+Node n = start;
+while(n != end){
+  ans += n;
+  ans += ", "
+  n = n.next();
+}
+ans = ans + end + "]"
+}
+
+
+
+
+
+//PRIVATE CLASS
+//
+//
   private class Node{
     private Integer data;
     private Node next,prev;
@@ -43,6 +77,9 @@ public class MyLinkedList{
 
 
 }
+///
+///
+//
 
 
 
