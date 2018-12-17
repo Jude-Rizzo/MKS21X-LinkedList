@@ -77,28 +77,53 @@ public int indexOf(Integer value){
 }
 
   public void add(int index, Integer value){
-    if (index > length || index < 0) throw new IndexOutOfBoundsException();
+    if (index > size || index < 0) throw new IndexOutOfBoundsException();
     Node n = new Node();
     n.setData(value);
-    if (length == 0 || index == length){
-      add(value);
-      length--;
+    if (size == 0 || index == size){
+      this.add(value);
+      size--;
     }
-    if (index == 0 && length != 0){
+    if (index == 0 && size != 0){
       Node helper = start;
       start = n;
       start.setNext(helper);
       helper.setPrev(start);
     }
-    if (index > 0 && index < length){
-      Node prevNode = getNthNode(index-1);
-      Node oldNode = getNthNode(index);
+    if (index > 0 && index < size){
+      Node prevNode = getnthnode(index-1);
+      Node oldNode = getnthnode(index);
       prevNode.setNext(n);
       oldNode.setPrev(n);
       n.setNext(oldNode);
       n.setPrev(prevNode);
     }
-    length++;
+    size++;
+  }
+
+  public Integer remove(int index){
+    if(index < 0 || index >= size) throw new IndexOutOfBoundsException();
+    if(index == 0){
+      int x = start.getData();
+      start = start.next();
+      start.setPrev(null);
+      size -= 1;
+      return x;
+    }
+    if(index == size - 1){
+      int x = end.getData()
+      end = end.prev();
+      end.setNext(null);
+      size -= 1;
+      return x;
+    }
+    Node n = getnthnode(index);
+    int x = n.getData();
+    Node prev = n.prev();
+    Node next = n.next();
+    prev.setNext(next);
+    next.setPrev(prev);
+    return x;
   }
 
 
