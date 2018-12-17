@@ -126,6 +126,13 @@ public int indexOf(Integer value){
     return x;
   }
 
+  public boolean remove(Integer value){
+    if(!this.contains(value)) return false;
+    int i = this.indexOf(value);
+    this.remove(i);
+    return true;
+  }
+
 
 //PRIVATE CLASS
 //
