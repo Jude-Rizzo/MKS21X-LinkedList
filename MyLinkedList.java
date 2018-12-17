@@ -14,16 +14,21 @@ public int size(){
 public boolean add(int value){
   if(start == null){
     start = new Node(value);
-    end = new Node(value);
+    end = start;
+    size ++;
     return true;
   }
   Node x = new Node(value);
   end.setNext(x);
   end = x;
+  size ++;
   return true;
 }
 
 public String toString(){
+  if(size == 0){
+    return "[]";
+  }
   String ans = "[";
 Node n = start;
 while(n != end){
@@ -57,23 +62,25 @@ public Integer set(int index, Integer value){
 }
 
 public boolean contains(Integer value){
-  Node n = start();
+  Node n = start;
   int counter = 0;
   while(counter < size){
     if(n.getData() == value) return true;
-    n = n.next()
+    n = n.next();
     counter ++;
   }
   return false;
 }
 
 public int indexOf(Integer value){
-  Node n = start();
+  Node n = start;
   int counter = 0;
   while(counter < size){
     if(n.getData() == value) return counter;
+    n = n.next();
     counter ++;
   }
+  return -1;
 }
 
   public void add(int index, Integer value){
@@ -111,7 +118,7 @@ public int indexOf(Integer value){
       return x;
     }
     if(index == size - 1){
-      int x = end.getData()
+      int x = end.getData();
       end = end.prev();
       end.setNext(null);
       size -= 1;
@@ -123,6 +130,7 @@ public int indexOf(Integer value){
     Node next = n.next();
     prev.setNext(next);
     next.setPrev(prev);
+    size -= 1;
     return x;
   }
 
@@ -143,6 +151,9 @@ public int indexOf(Integer value){
 
     public Node(Integer data){
       this.data = data;
+    }
+    public Node(){
+
     }
 
 
@@ -166,7 +177,7 @@ public int indexOf(Integer value){
     public Integer setData(Integer i){
       Integer x = data;
       data = i;
-      return data;
+      return x;
     }
     public String toString(){
       return "" + data;
