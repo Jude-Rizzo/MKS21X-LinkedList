@@ -13,26 +13,38 @@ public int size(){
 
 public boolean add(int value){
   if(start == null){
-    start, end = new Node(value);
+    start = new Node(value);
+    end = new Node(value);
     return true;
   }
-  x = new Node(value);
+  Node x = new Node(value);
   end.setNext(x);
   end = x;
-
+  return true;
 }
 
 public String toString(){
-  ans = "["
+  String ans = "[";
 Node n = start;
 while(n != end){
   ans += n;
-  ans += ", "
+  ans += ", ";
   n = n.next();
 }
-ans = ans + end + "]"
+ans = ans + end + "]";
+return ans;
 }
 
+private Node getnthnode(int n){
+  if(n >= size || n < 0) throw new IndexOutOfBoundsException();
+  int counter = 0;
+  Node now = start;
+  while(counter < n){
+    now = now.next();
+    counter ++;
+  }
+  return now;
+}
 
 
 
@@ -87,5 +99,5 @@ ans = ans + end + "]"
 
 
 
-  }
+
 }
