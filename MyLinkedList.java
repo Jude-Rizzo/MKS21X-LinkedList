@@ -46,7 +46,60 @@ private Node getnthnode(int n){
   return now;
 }
 
+public Integer get(int index){
+  Node n = getnthnode(index);
+  return n.getData();
+}
 
+public Integer set(int index, Integer value){
+  Node n = getnthnode(index);
+  return n.setData(value);
+}
+
+public boolean contains(Integer value){
+  Node n = start();
+  int counter = 0;
+  while(counter < size){
+    if(n.getData() == value) return true;
+    n = n.next()
+    counter ++;
+  }
+  return false;
+}
+
+public int indexOf(Integer value){
+  Node n = start();
+  int counter = 0;
+  while(counter < size){
+    if(n.getData() == value) return counter;
+    counter ++;
+  }
+}
+
+  public void add(int index, Integer value){
+    if (index > length || index < 0) throw new IndexOutOfBoundsException();
+    Node n = new Node();
+    n.setData(value);
+    if (length == 0 || index == length){
+      add(value);
+      length--;
+    }
+    if (index == 0 && length != 0){
+      Node helper = start;
+      start = n;
+      start.setNext(helper);
+      helper.setPrev(start);
+    }
+    if (index > 0 && index < length){
+      Node prevNode = getNthNode(index-1);
+      Node oldNode = getNthNode(index);
+      prevNode.setNext(n);
+      oldNode.setPrev(n);
+      n.setNext(oldNode);
+      n.setPrev(prevNode);
+    }
+    length++;
+  }
 
 
 //PRIVATE CLASS
@@ -89,15 +142,6 @@ private Node getnthnode(int n){
 
 
 }
-///
-///
-//
-
-
-
-
-
-
 
 
 }
