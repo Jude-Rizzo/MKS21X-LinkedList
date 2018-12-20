@@ -141,18 +141,15 @@ public int indexOf(Integer value){
     return true;
   }
   public void extend(MyLinkedList other){
-    if (size == 0){
-      start = other.start;
-      end = other.end;
-    }
-    else if (other.size() > 0){
-      other.getnthnode(0).setPrev(getnthnode(size - 1));
-      getnthnode(size - 1).setNext(other.getnthnode(0));
-      end = other.getnthnode(other.size() - 1);
-    }
-    size += other.size();
-    other.size = 0;
-  }
+     end.setNext(other.start);
+     other.start.setPrev(end);
+     size += other.size();
+     end = other.end;
+     other.start = null;
+     other.end = null;
+     other.size = 0;
+   }
+
 
 
 
