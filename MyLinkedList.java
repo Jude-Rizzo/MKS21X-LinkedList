@@ -146,14 +146,14 @@ public int indexOf(Integer value){
       end = other.end;
     }
     else if (other.size() > 0){
-      other.getNthNode(0).setPrev(getNthNode(size - 1));
-      getNthNode(size - 1).setNext(other.getNthNode(0));
-      end = other.getNthNode(other.size() - 1);
+      other.getnthnode(0).setPrev(getnthnode(size - 1));
+      getnthnode(size - 1).setNext(other.getnthnode(0));
+      end = other.getnthnode(other.size() - 1);
     }
     size += other.size();
     other.size = 0;
   }
-}
+
 
 
 //PRIVATE CLASS
@@ -199,6 +199,7 @@ public int indexOf(Integer value){
 
 
 }
+
 
 
 }
