@@ -140,6 +140,20 @@ public int indexOf(Integer value){
     this.remove(i);
     return true;
   }
+  public void extend(MyLinkedList other){
+    if (size == 0){
+      start = other.start;
+      end = other.end;
+    }
+    else if (other.size() > 0){
+      other.getNthNode(0).setPrev(getNthNode(size - 1));
+      getNthNode(size - 1).setNext(other.getNthNode(0));
+      end = other.getNthNode(other.size() - 1);
+    }
+    size += other.size();
+    other.size = 0;
+  }
+}
 
 
 //PRIVATE CLASS
